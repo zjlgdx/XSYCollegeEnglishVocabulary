@@ -1,24 +1,10 @@
-﻿using XSYCollegeEnglishVocabulary.Common;
-using XSYCollegeEnglishVocabulary.Data;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using XSYCollegeEnglishVocabulary.Common;
+using XSYCollegeEnglishVocabulary.DataModel;
 
 // The Hub Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -77,9 +63,8 @@ namespace XSYCollegeEnglishVocabulary
         /// session.  The state will be null the first time a page is visited.</param>
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroups = await SampleDataSource.GetGroupsAsync();
-            this.DefaultViewModel["Groups"] = sampleDataGroups;
+            var sampleDataBooks = await BookListDataSource.GetBooksAsync();
+            this.DefaultViewModel["Books"] = sampleDataBooks;
         }
 
         /// <summary>
@@ -96,29 +81,16 @@ namespace XSYCollegeEnglishVocabulary
         }
 
         /// <summary>
-        /// Shows the details of a clicked group in the <see cref="SectionPage"/>.
-        /// </summary>
-        private void GroupSection_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var groupId = ((SampleDataGroup)e.ClickedItem).UniqueId;
-            if (!Frame.Navigate(typeof(SectionPage), groupId))
-            {
-                throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
-            }
-        }
-
-        /// <summary>
         /// Shows the details of an item clicked on in the <see cref="ItemPage"/>
         /// </summary>
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Navigate to the appropriate destination page, configuring the new page
-            // by passing required information as a navigation parameter
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
-            if (!Frame.Navigate(typeof(ItemPage), itemId))
-            {
-                throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
-            }
+            var uniqueId = ((Book)e.ClickedItem).UniqueId;
+
+            //if (!Frame.Navigate(typeof(UnitListPage), uniqueId))
+            //{
+            //    throw new Exception("Navigation failed.");
+            //}
         }
 
         #region NavigationHelper registration

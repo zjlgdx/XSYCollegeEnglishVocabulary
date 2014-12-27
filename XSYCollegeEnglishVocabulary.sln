@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSYCollegeEnglishVocabulary", "XSYCollegeEnglishVocabulary\XSYCollegeEnglishVocabulary.csproj", "{7E71D533-63FF-49C0-9048-C6AF52CE9BA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSYCE.BackgroundAudioTask", "XSYCE.BackgroundAudioTask\XSYCE.BackgroundAudioTask.csproj", "{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,18 @@ Global
 		{7E71D533-63FF-49C0-9048-C6AF52CE9BA8}.Release|x86.ActiveCfg = Release|x86
 		{7E71D533-63FF-49C0-9048-C6AF52CE9BA8}.Release|x86.Build.0 = Release|x86
 		{7E71D533-63FF-49C0-9048-C6AF52CE9BA8}.Release|x86.Deploy.0 = Release|x86
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|ARM.ActiveCfg = Debug|ARM
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|ARM.Build.0 = Debug|ARM
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|x86.ActiveCfg = Debug|x86
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Debug|x86.Build.0 = Debug|x86
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|ARM.ActiveCfg = Release|ARM
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|ARM.Build.0 = Release|ARM
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|x86.ActiveCfg = Release|x86
+		{88C1F8CE-38AF-46EC-91A1-95DE250AD5AD}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
