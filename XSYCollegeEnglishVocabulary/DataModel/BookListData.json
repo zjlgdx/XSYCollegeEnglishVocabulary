@@ -1,15 +1,18 @@
 ﻿{"Books":[
   {
     "UniqueId": "1",
-    "Title": "第一册"
+    "Title": "第一册",
+    "ImagePath": "Assets/NHBook1.png"
   },
   {
     "UniqueId": "3",
-    "Title": "第三册"
+    "Title": "第三册",
+    "ImagePath": "Assets/NHBook3.png"
   },
   {
     "UniqueId": "4",
-    "Title": "第四册"
+    "Title": "第四册",
+    "ImagePath": "Assets/NHBook4.png"
   }
 ]
 }

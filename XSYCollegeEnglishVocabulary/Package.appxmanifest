@@ -1,41 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-
-  <Identity Name="82478e46-127c-4014-adb5-be96ebd981af"
-            Publisher="CN=Yibang"
-            Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="82478e46-127c-4014-adb5-be96ebd981af" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+  <Identity Name="37940YvanYang.46607ABF21476" Publisher="CN=4BE00AF2-1094-41E9-BDE4-AF3F522A812E" Version="1.1.0.1" />
+  <mp:PhoneIdentity PhoneProductId="37ffa33b-9530-4fff-8d6f-6d6aee9bda72" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>XSYCollegeEnglishVocabulary</DisplayName>
-    <PublisherDisplayName>Yibang</PublisherDisplayName>
+    <DisplayName>新视野大学英语词汇</DisplayName>
+    <PublisherDisplayName>Yvan Yang</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
-  
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="XSYCollegeEnglishVocabulary.App">
-        <m3:VisualElements
-            DisplayName="XSYCollegeEnglishVocabulary"
-            Square150x150Logo="Assets\Logo.png"
-            Square44x44Logo="Assets\SmallLogo.png"
-            Description="XSYCollegeEnglishVocabulary"
-            ForegroundText="light"
-            BackgroundColor="transparent">
-            <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
-            <m3:SplashScreen Image="Assets\SplashScreen.png"/>
-        </m3:VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="XSYCollegeEnglishVocabulary.App">
+      <m3:VisualElements DisplayName="新视野大学英语词汇" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="XSYCollegeEnglishVocabulary" ForegroundText="light" BackgroundColor="transparent">
+        <m3:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+          <m3:ShowNameOnTiles>
+            <m3:ShowOn Tile="square150x150Logo" />
+            <m3:ShowOn Tile="wide310x150Logo" />
+          </m3:ShowNameOnTiles>
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#08d7b5" />
+      </m3:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="XSYCE.BackgroundAudioTask.BackgroundAudioTask">
+          <BackgroundTasks>
+            <Task Type="audio" />
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="wp.xsyce">
+            <SupportedFileTypes>
+              <FileType>.mp3</FileType>
+              <FileType>.json</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>

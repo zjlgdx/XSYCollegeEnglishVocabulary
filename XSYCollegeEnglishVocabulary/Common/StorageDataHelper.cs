@@ -9,36 +9,36 @@ namespace XSYCollegeEnglishVocabulary.Common
 {
     class StorageDataHelper
     {
-       // public const string RootFolder = "WP.CE";
+        // public const string RootFolder = "WP.CE";
 
-        public static async Task<string> GetCourse(string courseId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="unitId">1_1</param>
+        /// <returns></returns>
+        public static async Task<string> GetUnit(string unitId, string bookText)
         {
-            var bookId = courseId.Substring(0, 1);
+            var book_unit_ids = unitId.Split('_');
+            var bookId = book_unit_ids[0];
 
-            var subfolder = Constants.DATA_BASE_PATH + ("integrated" + bookId);
-            var subsubfolder = subfolder + "/" + (GetUnitFolder(courseId));
+            var subfolder = Constants.DATA_BASE_PATH + ("horizonread" + bookId);
+            var unitName = GetUnitFolder(book_unit_ids[1]);
+            var subsubfolder = subfolder + "/" + unitName;
 
-            var file = subsubfolder + "/" + (GetUnitJsonFileFolder(courseId));
+            var file = subsubfolder + "/" + (GetUnitJsonFileFolder(unitName, bookText));
             StorageFile sourceFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri(file.Replace("\\", "/")));
             string result = await FileIO.ReadTextAsync(sourceFile);
             return result;
         }
 
-        private static string GetUnitFolder(string courseId)
+        private static string GetUnitFolder(string unitId)
         {
-            var index = courseId.IndexOf("/");
-            var unitIndex = courseId.Substring(index + 1, 2);
-            return "Unit" + unitIndex;
+            return "UNIT" + unitId.PadLeft(2, '0');
         }
 
-        private static string GetUnitJsonFileFolder(string courseId)
+        private static string GetUnitJsonFileFolder(string unitName, string bookText)
         {
-            if (courseId.Contains("p3newword1"))
-            {
-                return "TextB.json";
-            }
-
-            return "TextA.json";
+            return unitName + "_" + bookText + ".json";
         }
 
         //E:\collegeEnglish\integrated1\unitlist

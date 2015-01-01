@@ -12,14 +12,16 @@ namespace XSYCollegeEnglishVocabulary.DataModel
     /// </summary>
     public class Book
     {
-        public Book(String uniqueId, String title)
+        public Book(String uniqueId, String title, String imagePath)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
+            this.ImagePath = imagePath;
         }
 
         public string UniqueId { get; set; }
         public string Title { get; private set; }
+        public string ImagePath { get; set; }
 
         public override string ToString()
         {
@@ -59,7 +61,7 @@ namespace XSYCollegeEnglishVocabulary.DataModel
             foreach (JsonValue bookValue in jsonArray)
             {
                 JsonObject bookObject = bookValue.GetObject();
-                Book book = new Book(bookObject["UniqueId"].GetString(), bookObject["Title"].GetString());
+                Book book = new Book(bookObject["UniqueId"].GetString(), bookObject["Title"].GetString(), bookObject["ImagePath"].GetString());
 
                 this.Books.Add(book);
             }

@@ -1,0 +1,114 @@
+﻿<Page
+    x:Class="XSYCollegeEnglishVocabulary.VocabularyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XSYCollegeEnglishVocabulary"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dataModel="using:XSYCollegeEnglishVocabulary.DataModel"
+    mc:Ignorable="d"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <dataModel:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+        <DataTemplate x:Key="StandardFlipViewItemTemplate">
+            <Grid>
+                <Border BorderBrush="#E36FAB" CornerRadius="15" Background="Teal"  BorderThickness="3"  Margin="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" BorderBrush="#FF8800"  BorderThickness="0,0,0,3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Word}" FontFamily="Segoe UI" TextWrapping="WrapWholeWords"  Foreground="#CCFFFFFF" FontSize="{StaticResource TextStyleExtraLargePlusFontSize}" />
+                        </Border>
+
+                        <ListView Grid.Row="1" Visibility="{Binding DefinitionVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                            x:Name="itemListView"
+                            AutomationProperties.AutomationId="ItemListView"
+                            AutomationProperties.Name="Items In Group"
+                            TabIndex="1"
+                            ItemsSource="{Binding Definitions}"
+                            SelectionMode="None"
+                            IsSwipeEnabled="false"
+                            Margin="19,0,0,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Border CornerRadius="5" BorderThickness="0,0,0,2" BorderBrush="LightSeaGreen" Padding="2" >
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock Text="{Binding PartofSpeech}" Style="{ThemeResource ListViewItemTextBlockStyle}" Padding="0,0,15,0" FontStyle="Oblique"></TextBlock>
+                                                <TextBlock Text="{Binding Paraphrase}" Style="{ThemeResource ListViewItemTextBlockStyle}" Padding="0,0,15,0" TextWrapping="WrapWholeWords" />
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PivotItemHeaderTemplate">
+            <Grid>
+                <TextBlock Text="{Binding BookText}" FontSize="{StaticResource TextStyleExtraLargeFontSize}" />
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="{Binding UnitName}" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,9.5,10,0">
+            <Pivot x:Uid="Pivot" x:Name="pivot" CommonNavigationTransitionInfo.IsStaggerElement="True" HeaderTemplate="{StaticResource PivotItemHeaderTemplate}">
+                <!--Pivot item one-->
+                <PivotItem
+                x:Uid="PivotItem1"
+                Margin="5,14.5,5,0"
+                DataContext="{Binding Vocabularies}"
+                CommonNavigationTransitionInfo.IsStaggerElement="True">
+                    <!--Double line list with text wrapping-->
+
+                    <FlipView x:Name="NewWords" 
+                              BorderBrush="Black" 
+                              BorderThickness="1"
+                              ItemsSource="{Binding}"
+                              ItemTemplate="{StaticResource StandardFlipViewItemTemplate}"
+                              UseTouchAnimationsForAllNavigation="True">
+                    </FlipView>
+
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Uid="PlayAppBarButton" x:Name="PlayAppBarButton" Label="单词读音" Icon="Audio"  Click="PlayAppBarButton_OnClick" />
+            <AppBarButton x:Uid="ViewAppBarButton" x:Name="ViewAppBarButton" Label="显示释义" Icon="View" Click="ViewAppBarButton_Click" />
+            <CommandBar.SecondaryCommands>
+                <AppBarButton x:Uid="SwitchLesson" x:Name="SwitchLesson" Label="{Binding SwitchingBookText}" Icon="Switch" Click="SwitchLesson_Click"  />
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

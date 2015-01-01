@@ -8,6 +8,6 @@ namespace XSYCollegeEnglishVocabulary.Common
 {
     public class Constants
     {
-        public const string DATA_BASE_PATH = "ms-appx:///Data/WP.XSYCE/";
+        public const string DATA_BASE_PATH = "ms-appx:///Data/";
     }
 }

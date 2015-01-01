@@ -87,10 +87,10 @@ namespace XSYCollegeEnglishVocabulary
         {
             var uniqueId = ((Book)e.ClickedItem).UniqueId;
 
-            //if (!Frame.Navigate(typeof(UnitListPage), uniqueId))
-            //{
-            //    throw new Exception("Navigation failed.");
-            //}
+            if (!Frame.Navigate(typeof(UnitListPage), uniqueId))
+            {
+                throw new Exception("Navigation failed.");
+            }
         }
 
         #region NavigationHelper registration
